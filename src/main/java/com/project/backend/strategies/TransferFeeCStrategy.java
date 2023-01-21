@@ -1,6 +1,7 @@
 package com.project.backend.strategies;
 
 import com.project.backend.domain.Transfer;
+import com.project.backend.exceptions.InvalidTransferException;
 
 import java.time.Duration;
 
@@ -16,6 +17,6 @@ public class TransferFeeCStrategy implements TransferFeeStrategy {
             return transfer.getTransferValue() * 0.047F;
         else if (diff > 40)
             return transfer.getTransferValue() * 0.017F;
-        throw new Error("Error diff = " + diff);
+        throw new InvalidTransferException("A data que você escolheu não é válida para o valor da operação. Por favor, cheque a tabela");
     }
 }

@@ -1,6 +1,7 @@
 package com.project.backend.strategies;
 
 import com.project.backend.domain.Transfer;
+import com.project.backend.exceptions.InvalidTransferException;
 
 public class TransferFeeDStrategy implements TransferFeeStrategy {
     @Override
@@ -11,6 +12,6 @@ public class TransferFeeDStrategy implements TransferFeeStrategy {
             return new TransferFeeBStrategy().calculateFee(transfer);
         if (transfer.getTransferValue() <= 1000)
             return new TransferFeeAStrategy().calculateFee(transfer);
-        throw new RuntimeException("You cant transfer more than 2000 reais before 10 days");
+        throw new InvalidTransferException("Você não pode transferir mais de 2000 reais em antes de 10 dias");
     }
 }

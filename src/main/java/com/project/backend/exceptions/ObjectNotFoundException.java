@@ -1,16 +1,13 @@
 package com.project.backend.exceptions;
 
-public class ObjectNotFoundException extends RuntimeException{
+import java.io.Serial;
 
-	private static final long serialVersionUID = 1L;
+public class ObjectNotFoundException extends RuntimeException {
+    public ObjectNotFoundException(String msg) {
+        super(msg);
+    }
 
-	public ObjectNotFoundException(String msg) {
-		super(msg);
-	}
-	
-	public ObjectNotFoundException(String msg, Throwable cause) {
-		super (msg, cause);
-	}
-	
+    @Serial
+    private static final long serialVersionUID = 1L;
 
 }
