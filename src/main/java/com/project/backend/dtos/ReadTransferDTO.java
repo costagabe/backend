@@ -11,7 +11,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ReadTransferDTO {
     private  Long id;
-    private  LocalDate scheduleDate;
+    private  String scheduleDate;
+
+    private String createdAt;
     private  Double transferValue;
     private  Double fee;
     private  String sourceAccount;
