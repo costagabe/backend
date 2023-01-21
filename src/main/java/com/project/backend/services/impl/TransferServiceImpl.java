@@ -4,6 +4,7 @@ import com.project.backend.domain.Transfer;
 import com.project.backend.dtos.ReadTransferDTO;
 import com.project.backend.repositories.TransferRepository;
 import com.project.backend.services.TransferService;
+import com.project.backend.utils.transfer.TransferFeeFactory;
 import lombok.AllArgsConstructor;
 import org.hibernate.cfg.NotYetImplementedException;
 import org.modelmapper.ModelMapper;
@@ -18,8 +19,10 @@ public class TransferServiceImpl implements TransferService {
     private final ModelMapper mapper;
 
     @Override
-    public Transfer create(Transfer transfer) {
-        return transferRepository.save(transfer);
+    public void create(Transfer transfer) {
+        Float fee = TransferFeeFactory.createTransferFee(transfer).calculateFee(transfer);
+        transfer.setFee(fee);
+        transferRepository.save(transfer);
     }
 
     @Override

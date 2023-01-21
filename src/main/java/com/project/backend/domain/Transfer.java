@@ -4,21 +4,16 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transfer_table")
-@Getter
-@Setter
-@AllArgsConstructor
-@Builder
-@NoArgsConstructor
+@Data
 public class Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     private LocalDate scheduleDate;
 

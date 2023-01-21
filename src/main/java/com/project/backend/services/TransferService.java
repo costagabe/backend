@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface TransferService {
-    Transfer create(Transfer transfer);
+    void create(Transfer transfer);
 
     void delete(Long id);
 
