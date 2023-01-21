@@ -2,11 +2,11 @@ package com.project.backend.services.impl;
 
 import com.project.backend.domain.Transfer;
 import com.project.backend.dtos.ReadTransferDTO;
+import com.project.backend.exceptions.ObjectNotFoundException;
 import com.project.backend.repositories.TransferRepository;
 import com.project.backend.services.TransferService;
 import com.project.backend.utils.transfer.TransferFeeFactory;
 import lombok.AllArgsConstructor;
-import org.hibernate.cfg.NotYetImplementedException;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +27,9 @@ public class TransferServiceImpl implements TransferService {
 
     @Override
     public void delete(Long id) {
-        throw new NotYetImplementedException();
+        Transfer transfer = transferRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Transferência não encontrada"));
+        transferRepository.delete(transfer);
     }
 
     @Override

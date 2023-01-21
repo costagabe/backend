@@ -40,9 +40,16 @@ public class TransferController {
             transfer.setScheduleDate(scheduleDate);
             transferService.create(transfer);
             return mapper.map(transfer, ReadTransferDTO.class);
-        } catch(DateTimeParseException ex) {
+        } catch (DateTimeParseException ex) {
             throw new DataIntegrityException("Data inválida");
         }
     }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") Long id) {
+        transferService.delete(id);
+    }
+
 
 }
